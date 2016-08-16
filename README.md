@@ -69,3 +69,10 @@
  * Other distributed computation cases.
  
  To see more message programming scenarios and examples, goto [Koper message programming examples]()
+
+# Contribute other MQ provider
+ Koper provides a Kafka provider implementation by default. Because of its high scalability, you can implement other MQ provider easily,such as RabbitMQ, RocketMQ, ActiveMQ etc.
+ For examele, if you need to integrated with legacy RabbitMQ, you just need implement 
+ ```RabbitSender``` and ```RabbitReceiver```.
+ See the source code Kafka provider for more details. [KafkaSender](), [KafkaReceiver].
+ 
