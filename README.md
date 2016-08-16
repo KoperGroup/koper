@@ -8,7 +8,7 @@
  * Core component:     MessageSender, MessageListener, DataEventListener.
  * High-level concept: consumer group, message partition
 
-<img src="image/arch2.png" />
+<img src="image/arch1.png" />
 
 
 # Feature
