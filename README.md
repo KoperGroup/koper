@@ -12,9 +12,9 @@
 
 
 # Feature
- *  A simplified MQ-based listener model and API.
- *  A simplified Data Event model and API.
- *  MQ provider independent. Koper supports Kafka, RabbitMQ or other message queue as provider.
+ *  Simplified MQ-based listener model and API.
+ *  Simplified Data Event model and API.
+ *  MQ provider independent. Koper supports Kafka by default, but also supports other message queue as provider, e.g.  RabbitMQ, RocketMQ.
  *  High performance and throughput.
  *  High scalability.
  *  High extensibility.
