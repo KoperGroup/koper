@@ -16,6 +16,7 @@
  *  A simplified Data Event model and API.
  *  MQ provider independent. Koper supports Kafka, RabbitMQ or other message queue as provider.
  *  High performance and throughput.
+ *  High scalability.
  *  High extensibility.
  *  High-level feature: time spot recording, message sourcing
  
