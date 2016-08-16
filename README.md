@@ -68,7 +68,7 @@
  * Data analysis & process, real-time business index computation,  business alarm
  * Other distributed computation cases.
  
- To see more message programming scenarios and examples, goto [Async Scenarios andexamples](https://github.com/ZhaimeGroup/koper/wiki/Async-Scenarios-and-examples)
+ To see more message programming scenarios and examples, goto [Async Scenarios and examples](https://github.com/ZhaimeGroup/koper/wiki/Async-Scenarios-and-examples)
 
 # Contribute other MQ provider
  Koper provides a Kafka provider implementation by default. Because of its high scalability, you can implement other MQ provider easily,such as RabbitMQ, RocketMQ, ActiveMQ etc.
