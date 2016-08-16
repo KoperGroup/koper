@@ -1,11 +1,11 @@
  # Koper
+ 
  Koper is a MQ-based and event-driven distributed framework.
- * Koper provides a set of simplified API to implement message programming.
- * Koper supports distributed listener model and data event model.
+ * Koper provides a simplified distributed listener and data listener model,which can help you build your aync application in a quick and simple way.
  
 # Concept 
  * Core architecture:  Message Architeture， Event Driven Architecture（EDA）
- * Core concept:       message，producer, consumer，Message Queue(MQ), topic, subscribe
+ * Core concept:       producer, consumer, message, Message Queue(MQ), topic, subscribe
  * Core component:     MessageSender, MessageListener, DataEventListener.
  * High-level concept: consumer group, message partition
 
@@ -16,9 +16,9 @@
  *  A simplified MQ-based listener model and API.
  *  A simplified Data Event model and API.
  *  MQ provider independent. Koper supports Kafka, RabbitMQ or other message queue as provider.
- *  High performance and throuput.
+ *  High performance and throughput.
  *  High extensibility.
- *  High-level feature: time spot recording, message tracking
+ *  High-level feature: time spot recording, message sourcing
  
 # Programming Demo
 
