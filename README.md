@@ -22,7 +22,7 @@
  
 # Programming Demo
 
-## 1. Listener Model
+### 1. Listener Model
   Member signup example.
  ``` java
  @Component
@@ -39,7 +39,7 @@
  }
  ```
 
-## 2. Data Event & Data Listener Model
+### 2. Data Event & Data Listener Model
  Order example.
  ``` java
  @Component
@@ -75,5 +75,5 @@
 
  For examele, if you need to integrated with legacy RabbitMQ, you just need implement 
  ```RabbitSender``` and ```RabbitReceiver```.
- See the source code Kafka provider for more details. [KafkaSender](), [KafkaReceiver]().
+ Refer to the source code of Kafka provider for more details. [KafkaSender](), [KafkaReceiver]().
  
