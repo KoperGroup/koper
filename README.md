@@ -9,6 +9,9 @@
  * Core component:     MessageSender, MessageListener, DataEventListener.
  * High-level concept: consumer group, message partition
 
+<img src="image/arch2.png" />
+
+
 # Feature
  *  A simplified MQ-based listener model and API.
  *  A simplified Data Event model and API.
