@@ -38,23 +38,23 @@
  }
  ```
 
-## 2. Data Event Model
+## 2. Data Event & Data Listener Model
  Order example.
  ``` java
  @Component
  @DataListener(dataObject = "com.zhaimi.message.demo.dataevent.dao.impl.OrderMapperImpl")
  public class OrderListener {
-
+    // data event: onInsertOrder
     public void onInsertOrder(Order order) {
         System.out.println("orderNo : " + order.getOrderNo());
         System.out.println("create time : " + order.getCreatedTime());
-        // do some data analysis
+        // do some other operations
     }
-
+    //data event: onUpdateOrder
     public void onUpdateOrder(Order order) {
         System.out.println("orderNo : " + order.getOrderNo());
         System.out.println("create time :" + order.getCreatedTime());
-        // do some data analysis
+        // do some other operations such as cache refresh
     }
     
  }
