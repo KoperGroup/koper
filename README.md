@@ -61,7 +61,7 @@
  }
  ```
 
-# What can you do with Koper?
+# What can we do with Koper?
  Koper is designed to support distributed asynchornous programming based on Message Queue and Event Driven Ahchitecture. It's suitable for the following scenarios:
  * Internet Web Application, such as e-commerce, O2O, social media, finance, OA etc.
  * System analysis, such as log anaysis, anti-attack, throttling
