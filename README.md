@@ -68,6 +68,9 @@
  * Data analysis & process, real-time business index computation,  business alarm
  * Other distributed computation cases.
  
+In a large-scale application, the system architecture and event driven architecture look like something below.
+<img src="https://github.com/ZhaimeGroup/koper/blob/master/image/eda.png">
+
  To see more message programming scenarios and examples, goto [Async Scenarios and examples](https://github.com/ZhaimeGroup/koper/wiki/Async-Scenarios-and-examples)
 
 # Contribute other MQ provider
@@ -79,3 +82,4 @@
  ```RabbitSender``` and ```RabbitReceiver```.
  Refer to the source code of Kafka provider for more details. [KafkaSender](), [KafkaReceiver]().
  
+ Refer to [Developer Guide](https://github.com/ZhaimeGroup/koper/wiki/Developer%20Guide) for details.
