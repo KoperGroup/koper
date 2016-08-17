@@ -6,14 +6,14 @@
     <properties>
         <!-- <zm-framework-version>1.0</zm-framework-version> -->
 
-        <!-- koper -->
+        <!-- Koper -->
         <koper-core-version>1.2.0</koper-core-version>
         <koper-aop-version>1.2.0</koper-aop-version>
         <koper-dataevent-version>1.2.0</koper-dataevent-version>
         <koper-kafka-version>1.2.0</koper-kafka-version>
         <koper-testcase-version>1.2.0</koper-testcase-version>
 
-        <!-- third -->
+        <!-- Common libs -->
         <commons-io.version>2.4</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-beanutils.version>1.9.2</commons-beanutils.version>
