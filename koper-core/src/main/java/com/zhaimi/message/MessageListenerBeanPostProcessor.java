@@ -16,9 +16,7 @@
  */
 package com.zhaimi.message;
 
-import java.lang.reflect.Method;
-
-import com.sun.deploy.util.ReflectionUtil;
+import com.zhaimi.message.client.ConsumerLauncher;
 import com.zhaimi.message.util.ReflectUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -28,7 +26,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.util.ReflectionUtils;
 
-import com.zhaimi.message.client.ConsumerLauncher;
+import java.lang.reflect.Method;
+
 /**
  * MessageListenerBeanPostProcessor
  *
@@ -37,45 +36,46 @@ import com.zhaimi.message.client.ConsumerLauncher;
  */
 public class MessageListenerBeanPostProcessor implements BeanPostProcessor {
 
-	private static final Logger log = LoggerFactory.getLogger(MessageListenerBeanPostProcessor.class);
+    private static final Logger log = LoggerFactory.getLogger(MessageListenerBeanPostProcessor.class);
 
-	@Autowired
-	private ConsumerLauncher consumerLauncher;
+    @Autowired
+    private ConsumerLauncher consumerLauncher;
 
 
-	@Override
-	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-		return bean;
-	}
+    @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        return bean;
+    }
 
-	/**
-	 * Find and register message listeners.
-	 */
-	@Override
-	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+    /**
+     * Find and register message listeners.
+     */
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 
-	    if(bean instanceof MsgBeanListener) {
-	    	log.info("*** MsgBeanListener found:" + bean);
-	    	registerMsgBeanListener((MsgBeanListener)bean);
-	    }
-		return bean;
-	}
+        if (bean instanceof MsgBeanListener) {
+            log.info("*** MsgBeanListener found:" + bean);
+            registerMsgBeanListener((MsgBeanListener) bean);
+        }
+        return bean;
+    }
 
-	/**
-	 * 注册消息监听器
-	 * @param bean
-	 */
-	protected void registerMsgBeanListener(MsgBeanListener listener) {
+    /**
+     * 注册消息监听器
+     *
+     * @param listener
+     */
+    protected void registerMsgBeanListener(MsgBeanListener listener) {
 
-		Class<?> clazz = listener.getClass();
-		Method method;
-		String topic = null;
-		Listen listen;
-		method = getMethod(clazz, "onMsgBean");
-		listen = method == null ? null : method.getAnnotation(Listen.class);
+        Class<?> clazz = listener.getClass();
+        Method method;
+        String topic = null;
+        Listen listen;
+        method = getMethod(clazz, "onMsgBean");
+        listen = method == null ? null : method.getAnnotation(Listen.class);
 
-		if( listen == null ) {
-			// 先拿类上的 Listen 注解, 没有再拿方法上的Listen
+        if (listen == null) {
+            // 先拿类上的 Listen 注解, 没有再拿方法上的Listen
             final Listen clazzAnnotation = ReflectUtil.getListenAnnotation(clazz);
             if (clazzAnnotation == null) {
                 method = getMethod(clazz, "onMessage");
@@ -83,46 +83,47 @@ public class MessageListenerBeanPostProcessor implements BeanPostProcessor {
             } else {
                 listen = clazzAnnotation;
             }
-		}
+        }
 
-		if( listen == null) {
-			log.info("Tip>>> Topic not specified! @Listen annotation not declared on event method 'onMessage or onMsgBean' of bean " + listener);
-		} else {
-			 topic = listen.topic();
-		}
+        if (listen == null) {
+            log.info("Tip>>> Topic not specified! @Listen annotation not declared on event method 'onMessage or onMsgBean' of bean " + listener);
+        } else {
+            topic = listen.topic();
+        }
 
-		registerListener(listener, topic);
-	}
+        registerListener(listener, topic);
+    }
 
-	/**
-	 * registerListener to registry.
-	 * @param listener
-	 * @param topic
-	 */
-	protected void registerListener(Object listener, String topic) {
-		if(StringUtils.isNotBlank(topic)) {
-			consumerLauncher.getListenerRegistry().register(topic, listener);
-			log.info("注册监听器 Register listener '{}' on topic '{}'", listener, topic);
-		}
-	}
-
-	/**
-	 * 获取第一个方法
+    /**
+     * registerListener to registry.
      *
-	 * @param clazz
-	 * @param methodName
-	 * @return
-	 */
-	protected Method getMethod(Class<?> clazz, String methodName) {
+     * @param listener
+     * @param topic
+     */
+    protected void registerListener(Object listener, String topic) {
+        if (StringUtils.isNotBlank(topic)) {
+            consumerLauncher.getListenerRegistry().register(topic, listener);
+            log.info("注册监听器 Register listener '{}' on topic '{}'", listener, topic);
+        }
+    }
 
-		Method[] methods = ReflectionUtils.getAllDeclaredMethods(clazz); //clazz.getDeclaredMethods();
-		Method findMethod = null;
-		for (Method method : methods) {
-			if (method.getName().equals(methodName)
-					&& method.getAnnotations().length != 0) {
-				findMethod = method;
-			}
-		}
-		return findMethod;
-	}
+    /**
+     * 获取第一个方法
+     *
+     * @param clazz
+     * @param methodName
+     * @return
+     */
+    protected Method getMethod(Class<?> clazz, String methodName) {
+
+        Method[] methods = ReflectionUtils.getAllDeclaredMethods(clazz); //clazz.getDeclaredMethods();
+        Method findMethod = null;
+        for (Method method : methods) {
+            if (method.getName().equals(methodName)
+                    && method.getAnnotations().length != 0) {
+                findMethod = method;
+            }
+        }
+        return findMethod;
+    }
 }
