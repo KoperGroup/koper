@@ -50,7 +50,7 @@ A consumer subscribes the topic and handle the message.
 ### 2. Data Event & Data Listener Model
  Order example. 
  
- Data Event machanism can intercept method invocation of DAO object and send it as data event. 
+ Koper support EDA programming. The Data Event machanism can intercept method invocation of object(such as DAO) and send it to MQ as data event. 
  ```Java
 orderDao.insertOrder( order);
 orderDao.updateOrder( order);
@@ -58,7 +58,7 @@ orderDao.updateOrder( order);
  DataListener responds to the event.
  ``` java
  @Component
- @DataListener(dataObject = "com.zhaimi.message.demo.dataevent.dao.impl.OrderMapperImpl")
+ @DataListener(dataObject = "com.zhaimi.message.demo.dataevent.dao.impl.OrderDaoImpl")
  public class OrderListener {
     // data event: onInsertOrder
     public void onInsertOrder(Order order) {
@@ -71,7 +71,7 @@ orderDao.updateOrder( order);
         System.out.println("orderNo : " + order.getOrderNo());
         // do some other operations such as cache refresh
     }
-   //data event: onUpdateOrder_X
+   //data event: exception on updateOrder
     public void onUpdateOrder_X(Order order, DataEvent event) {
        String ex = event.getException();
        System.out.println("onUpdateOrder exception :" +ex);
