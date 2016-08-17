@@ -27,6 +27,11 @@
 
 ### 1. Listener Model
   Member signup example.
+  When a member signups, a message is send to MQ.
+```Go
+   messageSender.send("zhaimi.memberSignup", "Signed up successfully! " + member.getPhoneNo());
+```
+A consumer subscribe the topic and handle the message. 
  ``` java
  @Component
  public class MemberSignupListener extends AbstractMessageListener {
@@ -34,7 +39,7 @@
     @Autowired
     private SmsService smsService;
 
-    @Listen(topic = "com.zhaimi.message.demo.message.notifyMemberAfterSignup")
+    @Listen(topic = "zhaimi.memberSignup")
     public void onMessage(String msg) {
         smsService.sendSms(msg);
     }
@@ -43,7 +48,8 @@
  ```
 
 ### 2. Data Event & Data Listener Model
- Order example.
+ Order example. 
+ Data Event machanism can intercept DAO object then convert it to message. DataListener responds and process the data event.
  ``` java
  @Component
  @DataListener(dataObject = "com.zhaimi.message.demo.dataevent.dao.impl.OrderMapperImpl")
@@ -60,7 +66,11 @@
         System.out.println("create time :" + order.getCreatedTime());
         // do some other operations such as cache refresh
     }
-    
+   //data event: onUpdateOrder_X
+    public void onUpdateOrder_X(Order order, DataEvent event) {
+       String ex = event.getException();
+       System.out.println("onUpdateOrder exception :" +ex);
+    }
  }
  ```
 
