@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+
+
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:component-scan base-package="com.zhaimi">
+        <!-- ignore this class because this file is prepared for consumer.  -->
+        <context:exclude-filter type="assignable" expression="com.zhaimi.message.demo.message.service.MemberService"/>
+    </context:component-scan>
+
+    <!-- 载入属性文件 -->
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:kafka/kafka-data-consumer.properties"/>
+
+    <!-- 消息监听者收集器-->
+    <bean id="messageListenerBeanPostProcessor" class="com.zhaimi.message.event.DataEventListenerPostProcessor"/>
+
+    <bean id="consumerProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="zookeeper.connect">${zookeeper.connect}</prop>
+                <prop key="group.id">${group.id}</prop>
+                <prop key="zookeeper.session.timeout.ms">${zookeeper.session.timeout.ms}</prop>
+                <prop key="zookeeper.sync.time.ms">${zookeeper.sync.time.ms}</prop>
+                <prop key="auto.commit.interval.ms">${auto.commit.interval.ms}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="router" class="com.zhaimi.message.router.RandomRouter"/>
+
+    <bean id="messageCenter" class="com.zhaimi.message.DefaultMessageCenter">
+        <constructor-arg index="0" value="1"/>
+        <constructor-arg index="1" ref="router"/>
+    </bean>
+
+    <bean id="consumerLauncher" class="com.zhaimi.message.client.DefaultConsumerLauncher">
+        <property name="properties" ref="consumerProperties"/>
+        <property name="autoStart" value="false"/>
+        <property name="partitions" value="${num.partitions}"/>
+        <property name="dispatcherThreads" value="${dispatcherThreads}"/>
+        <property name="messageCenter" ref="messageCenter"/>
+        <property name="messageReceiverClass" value="com.zhaimi.message.kafka.KafkaReceiver"/>
+        <property name="messageDispatcherClass" value="com.zhaimi.message.event.DataEventMessageDispatcher"/>
+    </bean>
+</beans>
