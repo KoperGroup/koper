@@ -50,7 +50,7 @@ A consumer subscribes the topic and handle the message.
 
 ### 2. Data Event & Data Listener Model
  Order example. 
- Data Event machanism can intercept DAO object then convert it to message. DataListener responds and process the data event.
+ Data Event machanism can intercept DAO object invocation and send it as message. DataListener responds and process the data event.
  ``` java
  @Component
  @DataListener(dataObject = "com.zhaimi.message.demo.dataevent.dao.impl.OrderMapperImpl")
