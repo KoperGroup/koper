@@ -65,16 +65,18 @@
  ```
 
 # What can we do with Koper?
- Koper is designed to support distributed asynchornous programming based on Message Queue and Event Driven Ahchitecture. It's suitable for the following scenarios:
- * Internet Web Application, such as e-commerce, O2O, social media, finance, OA etc.
- * System analysis, such as log anaysis, anti-attack, throttling
- * Data analysis & process, real-time business index computation,  business alarm
- * Other distributed computation cases.
- 
+ Koper is designed to support distributed asynchornous programming based on Message Queue and Event Driven Ahchitecture. It's suitable for scenarios such as Web Application, Business Monitor, Data statistics or Big Data etc.
+
 In a large-scale application, the system architecture and event driven architecture look like something below.
 <img src="https://github.com/ZhaimeGroup/koper/blob/master/image/eda.png">
 
- To see more message programming scenarios and examples, goto [Async Scenarios and examples](https://github.com/ZhaimeGroup/koper/wiki/Async-Scenarios-and-examples)
+#### Typical use cases
+  * Asynchronous Business Process
+  * Distributed Data Update or Cache Update
+  * Data Log
+  * Business Monitor and Alarm
+  
+ Refer to [Async Scenarios and examples](https://github.com/ZhaimeGroup/koper/wiki/Async-Scenarios-and-examples) for more demos.
 
 # Contribute other MQ provider
  Koper provides a Kafka provider implementation by default. Because of its high scalability, you can implement other MQ provider easily,such as RabbitMQ, RocketMQ, ActiveMQ etc.
