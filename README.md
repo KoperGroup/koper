@@ -31,7 +31,7 @@
 ```Go
    messageSender.send("zhaimi.memberSignup", "Signed up successfully! " + member.getPhoneNo());
 ```
-A consumer subscribe the topic and handle the message. 
+A consumer subscribes the topic and handle the message. 
  ``` java
  @Component
  public class MemberSignupListener extends AbstractMessageListener {
@@ -63,7 +63,6 @@ A consumer subscribe the topic and handle the message.
     //data event: onUpdateOrder
     public void onUpdateOrder(Order order) {
         System.out.println("orderNo : " + order.getOrderNo());
-        System.out.println("create time :" + order.getCreatedTime());
         // do some other operations such as cache refresh
     }
    //data event: onUpdateOrder_X
