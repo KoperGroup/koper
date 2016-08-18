@@ -1,6 +1,6 @@
 # Koper
  Koper is a MQ-based and event-driven distributed programming framework.
- * Koper provides a simplified distributed listener and data listener model,which can help you build your aync application in a quick and simple way.
+ * Koper provides a simplified distributed listener and data listener model,which can help you build your async application quickly and easily.
 
     [[Quick Start]](https://github.com/ZhaimeGroup/koper/wiki/Quick%20Start)   
     [[User Guide]](https://github.com/ZhaimeGroup/koper/wiki/User%20Guide)  
@@ -17,21 +17,21 @@
 # Feature
  *  Simplified MQ-based listener model and API.
  *  Simplified Data Event model and API.
- *  MQ provider independent. Koper supports Kafka by default, but also supports other message queue as provider, e.g.  RabbitMQ, RocketMQ.
+ *  MQ provider independent. 
+     *  Koper supports Kafka by default, but also supports other message queue as provider, e.g.  RabbitMQ, RocketMQ.
  *  High performance and throughput.
- *  High scalability.
- *  High extensibility.
- *  High-level feature: time spot recording, message sourcing
+ *  High scalability based on MQ.
+ *  High-level feature: time spot recording, message tracking.
  
 # Programming Demo
 
 ### 1. Listener Model
   Member signup example.
-  When a member signups, a message is send to MQ.
+  When a member signs up, a message is sent to MQ by messageSender.
 ```Go
    messageSender.send("zhaimi.memberSignup", "Signed up successfully! " + member.getPhoneNo());
 ```
-A consumer subscribes the topic and handle the message. 
+ On the other hand, a consumer subscribes the topic and handle the message, e.g. send a SMS to notify member.
  ``` java
  @Component
  public class MemberSignupListener extends AbstractMessageListener {
@@ -49,10 +49,16 @@ A consumer subscribes the topic and handle the message.
 
 ### 2. Data Event & Data Listener Model
  Order example. 
- Data Event machanism can intercept DAO object then convert it to message. DataListener responds and process the data event.
+ 
+ Koper support EDA programming. The Data Event machanism can intercept method invocation of object(such as DAO) and send it to MQ as data event. 
+ ```Java
+orderDao.insertOrder( order);
+orderDao.updateOrder( order);
+ ```
+ DataListener responds to the event.
  ``` java
  @Component
- @DataListener(dataObject = "com.zhaimi.message.demo.dataevent.dao.impl.OrderMapperImpl")
+ @DataListener(dataObject = "com.zhaimi.message.demo.dataevent.dao.impl.OrderDaoImpl")
  public class OrderListener {
     // data event: onInsertOrder
     public void onInsertOrder(Order order) {
@@ -65,7 +71,7 @@ A consumer subscribes the topic and handle the message.
         System.out.println("orderNo : " + order.getOrderNo());
         // do some other operations such as cache refresh
     }
-   //data event: onUpdateOrder_X
+   //data event: exception on updateOrder
     public void onUpdateOrder_X(Order order, DataEvent event) {
        String ex = event.getException();
        System.out.println("onUpdateOrder exception :" +ex);
@@ -87,13 +93,25 @@ In a large-scale application, the system architecture and event driven architect
   
  Refer to [Async Scenarios and examples](https://github.com/ZhaimeGroup/koper/wiki/Async-Scenarios-and-examples) for more demos.
 
-# Contribute other MQ provider
- Koper provides a Kafka provider implementation by default. Because of its high scalability, you can implement other MQ provider easily,such as RabbitMQ, RocketMQ, ActiveMQ etc.
+# Contribute
+####  Fix bug or enhance Koper
+ Any bug fix or function enhancement is welcomed. Feel free to Fork the source code and commit your pull request.
+ 
+ Refer to [Developer Guide](https://github.com/ZhaimeGroup/koper/wiki/Developer%20Guide) for details.
+ 
+####  Contribute other MQ provider
+ Koper provides a Kafka provider implementation by default, but also provides high extensibility. You can implement other MQ provider easily, such as RabbitMQ, RocketMQ, ActiveMQ etc.
  
  <img src="https://github.com/ZhaimeGroup/koper/blob/master/image/koper-extend.png"/>
 
- For examele, if you need to integrated with legacy RabbitMQ, you just need implement 
- ```RabbitSender``` and ```RabbitReceiver```.
- Refer to the source code of Kafka provider for more details. [KafkaSender](), [KafkaReceiver]().
+ For examele, if you need to integrated with legacy RabbitMQ, you just need to write two provider classes 
+ ```RabbitSender``` and ```RabbitReceiver``` by implementing interfaces
+
+```Java
+ MessageSender :   public interface MessageSender 
+ MessageReceiver : public interface MessageReceiver 
+```
+
+ Write another provider, refer to the source code of Kafka provider for more details. [KafkaSender](https://github.com/ZhaimeGroup/koper/blob/master/koper-core/src/main/java/com/zhaimi/message/sender/MessageSender.java), [KafkaReceiver](https://github.com/ZhaimeGroup/koper/blob/master/koper-core/src/main/java/com/zhaimi/message/client/MessageReceiver.java).
  
- Refer to [Developer Guide](https://github.com/ZhaimeGroup/koper/wiki/Developer%20Guide) for details.
+ 
