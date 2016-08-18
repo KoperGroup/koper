@@ -1,6 +1,8 @@
 # Koper
  Koper is a MQ-based and event-driven distributed programming framework.
- * Koper provides a simplified distributed listener and data listener model,which can help you build your async application quickly and easily.
+
+ * Koper provides a simplified distributed listener and data listener model,which can help you build your async application in a simple way.
+
 
     [[Quick Start]](https://github.com/ZhaimeGroup/koper/wiki/Quick%20Start)   
     [[User Guide]](https://github.com/ZhaimeGroup/koper/wiki/User%20Guide)  
@@ -103,4 +105,3 @@ In a large-scale application, the system architecture and event driven architect
  
 Refer to [Developer Guide](https://github.com/ZhaimeGroup/koper/wiki/Developer%20Guide) for details.
 
- 
