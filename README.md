@@ -1,6 +1,6 @@
 # Koper
  Koper is a MQ-based and event-driven distributed programming framework.
- * Koper provides a simplified distributed listener and data listener model,which can help you build your aync application in a quick and simple way.
+ * Koper provides a simplified distributed listener and data listener model,which can help you build your async application quickly and easily.
 
     [[Quick Start]](https://github.com/ZhaimeGroup/koper/wiki/Quick%20Start)   
     [[User Guide]](https://github.com/ZhaimeGroup/koper/wiki/User%20Guide)  
@@ -17,21 +17,21 @@
 # Feature
  *  Simplified MQ-based listener model and API.
  *  Simplified Data Event model and API.
- *  MQ provider independent. 
-     *  Koper supports Kafka by default, but also supports other message queue as provider, e.g.  RabbitMQ, RocketMQ.
+ *  MQ component independent. 
+     *  Koper supports Kafka by default, but also supports other message queue as component, e.g.  RabbitMQ, RocketMQ.
  *  High performance and throughput.
  *  High scalability based on MQ.
- *  High-level feature: time spot recording, message tracking
+ *  High-level feature: time spot recording, message tracking.
  
 # Programming Demo
 
 ### 1. Listener Model
   Member signup example.
-  When a member signs up, a message is sent to MQ by messageSender.
+  When a member signs up, a message is sented to MQ by messageSender.
 ```Go
    messageSender.send("zhaimi.memberSignup", "Signed up successfully! " + member.getPhoneNo());
 ```
- On the other hand, a consumer subscribes the topic and handle the message, e.g. send a SMS to notify member.
+ On the other hand, a consumer subscribes the topic and handle the message, e.g. send a SMS to a member notifier.
  ``` java
  @Component
  public class MemberSignupListener extends AbstractMessageListener {
@@ -99,8 +99,8 @@ In a large-scale application, the system architecture and event driven architect
  
  Refer to [Developer Guide](https://github.com/ZhaimeGroup/koper/wiki/Developer%20Guide) for details.
  
-####  Contribute other MQ provider
- Koper provides a Kafka provider implementation by default, but also provides high extensibility. You can implement other MQ provider easily, such as RabbitMQ, RocketMQ, ActiveMQ etc.
+####  Contribute other MQ component
+ Koper provides a Kafka component implementation by default, but also provides high extensibility. You can implement other MQ provider easily, such as RabbitMQ, RocketMQ, ActiveMQ etc.
  
  <img src="https://github.com/ZhaimeGroup/koper/blob/master/image/koper-extend.png"/>
 
