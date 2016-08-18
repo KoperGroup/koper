@@ -1,2 +1,0 @@
-Koper User Guide
-
