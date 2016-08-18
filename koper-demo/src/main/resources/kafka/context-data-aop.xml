@@ -9,14 +9,14 @@
     <!-- 启动AspectJ支持 -->
     <aop:aspectj-autoproxy/>
 
-    <bean id="beforeSendMessageAdvice" class="com.zhaimi.message.aop.SendMsgBeforeInvokeAdvice"/>
-    <bean id="afterSendMessageAdvice" class="com.zhaimi.message.aop.SendMsgAfterInvokeAdvice"/>
-    <bean id="exceptionSendMessageAdvice" class="com.zhaimi.message.aop.SendMsgAfterExceptionAdvice"/>
+    <bean id="beforeSendMessageAdvice" class="com.zhaimi.koper.aop.SendMsgBeforeInvokeAdvice"/>
+    <bean id="afterSendMessageAdvice" class="com.zhaimi.koper.aop.SendMsgAfterInvokeAdvice"/>
+    <bean id="exceptionSendMessageAdvice" class="com.zhaimi.koper.aop.SendMsgAfterExceptionAdvice"/>
 
     <aop:config>
         <!-- 标注切面，可以根据需要，在DAO或Service相应方法上使用标注 -->
-        <aop:pointcut id="beforeSendMsgPointCut" expression="@annotation(com.zhaimi.message.aop.SendMessageBefore)"/>
-        <aop:pointcut id="afterSendMsgPointCut" expression="@annotation(com.zhaimi.message.aop.SendMessageAfter)"/>
+        <aop:pointcut id="beforeSendMsgPointCut" expression="@annotation(com.zhaimi.koper.aop.SendMessageBefore)"/>
+        <aop:pointcut id="afterSendMsgPointCut" expression="@annotation(com.zhaimi.koper.aop.SendMessageAfter)"/>
 
         <!-- 通配符切面，可以按需要修改通配符表达式 -->
         <!-- 方法调用前发送消息 -->
