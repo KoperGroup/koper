@@ -1,6 +1,6 @@
 # Koper
  Koper is a MQ-based and event-driven distributed programming framework.
- * Koper provides a simplified distributed listener and data listener model,which can help you build your aync application in a quick and simple way.
+ * Koper provides a simplified distributed listener and data listener model,which can help you build your async application quickly and easily.
 
     [[Quick Start]](https://github.com/ZhaimeGroup/koper/wiki/Quick%20Start)   
     [[User Guide]](https://github.com/ZhaimeGroup/koper/wiki/User%20Guide)  
@@ -21,7 +21,7 @@
      *  Koper supports Kafka by default, but also supports other message queue as provider, e.g.  RabbitMQ, RocketMQ.
  *  High performance and throughput.
  *  High scalability based on MQ.
- *  High-level feature: time spot recording, message tracking
+ *  High-level feature: time spot recording, message tracking.
  
 # Programming Demo
 
