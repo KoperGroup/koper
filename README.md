@@ -31,7 +31,7 @@
 ```Go
    messageSender.send("zhaimi.memberSignup", "Signed up successfully! " + member.getPhoneNo());
 ```
- On the other hand, a consumer subscribes the topic and handle the message, e.g. send a SMS to a member notifier.
+ On the other hand, a consumer subscribes the topic and handle the message, e.g. send a SMS to notify member.
  ``` java
  @Component
  public class MemberSignupListener extends AbstractMessageListener {
