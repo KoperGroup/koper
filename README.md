@@ -93,13 +93,25 @@ In a large-scale application, the system architecture and event driven architect
   
  Refer to [Async Scenarios and examples](https://github.com/ZhaimeGroup/koper/wiki/Async-Scenarios-and-examples) for more demos.
 
-# Contribute other MQ provider
- Koper provides a Kafka provider implementation by default. Because of its high scalability, you can implement other MQ provider easily,such as RabbitMQ, RocketMQ, ActiveMQ etc.
+# Contribute
+####  Fix bug or enhance Koper
+ Any bug fix or function enhancement is welcomed. Feel free to Fork the source code and commit your pull request.
+ 
+ Refer to [Developer Guide](https://github.com/ZhaimeGroup/koper/wiki/Developer%20Guide) for details.
+ 
+####  Contribute other MQ provider
+ Koper provides a Kafka provider implementation by default, but also provides high extensibility. You can implement other MQ provider easily, such as RabbitMQ, RocketMQ, ActiveMQ etc.
  
  <img src="https://github.com/ZhaimeGroup/koper/blob/master/image/koper-extend.png"/>
 
- For examele, if you need to integrated with legacy RabbitMQ, you just need implement 
- ```RabbitSender``` and ```RabbitReceiver```.
- Refer to the source code of Kafka provider for more details. [KafkaSender](), [KafkaReceiver]().
+ For examele, if you need to integrated with legacy RabbitMQ, you just need to write two provider classes 
+ ```RabbitSender``` and ```RabbitReceiver``` by implementing interfaces
+
+```Java
+ MessageSender :   public interface MessageSender 
+ MessageReceiver : public interface MessageReceiver 
+```
+
+ Write another provider, refer to the source code of Kafka provider for more details. [KafkaSender](https://github.com/ZhaimeGroup/koper/blob/master/koper-core/src/main/java/com/zhaimi/message/sender/MessageSender.java), [KafkaReceiver](https://github.com/ZhaimeGroup/koper/blob/master/koper-core/src/main/java/com/zhaimi/message/client/MessageReceiver.java).
  
- Refer to [Developer Guide](https://github.com/ZhaimeGroup/koper/wiki/Developer%20Guide) for details.
+ 
