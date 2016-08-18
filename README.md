@@ -34,12 +34,12 @@
  On the other hand, a consumer subscribes the topic and handle the message, e.g. send a SMS to notify member.
  ``` java
  @Component
+ @Listen(topic = "zhaimi.memberSignup")
  public class MemberSignupListener extends AbstractMessageListener {
 
     @Autowired
     private SmsService smsService;
-
-    @Listen(topic = "zhaimi.memberSignup")
+    
     public void onMessage(String msg) {
         smsService.sendSms(msg);
     }
