@@ -17,21 +17,21 @@
 # Feature
  *  Simplified MQ-based listener model and API.
  *  Simplified Data Event model and API.
- *  MQ provider independent. Koper supports Kafka by default, but also supports other message queue as provider, e.g.  RabbitMQ, RocketMQ.
+ *  MQ provider independent. 
+     *  Koper supports Kafka by default, but also supports other message queue as provider, e.g.  RabbitMQ, RocketMQ.
  *  High performance and throughput.
- *  High scalability.
- *  High extensibility.
- *  High-level feature: time spot recording, message sourcing
+ *  High scalability based on MQ.
+ *  High-level feature: time spot recording, message tracking
  
 # Programming Demo
 
 ### 1. Listener Model
   Member signup example.
-  When a member signups, a message is send to MQ.
+  When a member signs up, a message is sent to MQ by messageSender.
 ```Go
    messageSender.send("zhaimi.memberSignup", "Signed up successfully! " + member.getPhoneNo());
 ```
-A consumer subscribes the topic and handle the message. 
+ On the other hand, a consumer subscribes the topic and handle the message, e.g. send a SMS to notify member.
  ``` java
  @Component
  public class MemberSignupListener extends AbstractMessageListener {
