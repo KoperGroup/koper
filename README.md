@@ -112,6 +112,6 @@ In a large-scale application, the system architecture and event driven architect
  MessageReceiver : public interface MessageReceiver 
 ```
 
- Write another provider, refer to the source code of Kafka provider for more details. [KafkaSender](https://github.com/ZhaimeGroup/koper/blob/master/koper-core/src/main/java/com/zhaimi/message/sender/MessageSender.java), [KafkaReceiver](https://github.com/ZhaimeGroup/koper/blob/master/koper-core/src/main/java/com/zhaimi/message/client/MessageReceiver.java).
+ Write another provider, refer to the source code of Kafka provider for more details. [KafkaSender](https://github.com/ZhaimeGroup/koper/blob/master/koper-kafka/src/main/java/com/zhaimi/message/kafka/KafkaSender.java), [KafkaReceiver](https://github.com/ZhaimeGroup/koper/blob/master/koper-kafka/src/main/java/com/zhaimi/message/kafka/KafkaReceiver.java).
  
  
