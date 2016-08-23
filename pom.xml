@@ -12,6 +12,7 @@
         <koper-dataevent-version>1.2.0</koper-dataevent-version>
         <koper-kafka-version>1.2.0</koper-kafka-version>
         <koper-testcase-version>1.2.0</koper-testcase-version>
+        <koper-demo-version>1.2.0</koper-demo-version>
 
         <!-- Common libs -->
         <commons-io.version>2.4</commons-io.version>

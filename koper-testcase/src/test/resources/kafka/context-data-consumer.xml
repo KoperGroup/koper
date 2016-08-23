@@ -18,7 +18,7 @@
 	<context:property-placeholder ignore-unresolvable="true" location="classpath:kafka/kafka-data-consumer.properties"/>
 
   	<!-- 消息监听者收集器-->
-	<bean id="messageListenerBeanPostProcessor" class="com.zhaimi.message.event.DataEventListenerPostProcessor"/>
+	<bean id="messageListenerBeanPostProcessor" class="com.zhaimi.koper.event.DataEventListenerPostProcessor"/>
 
 	<bean id = "consumerProperties" class = "org.springframework.beans.factory.config.PropertiesFactoryBean" >
 		<property name = "properties" >
@@ -34,20 +34,20 @@
 		</property>
 	</bean>
 
-	<bean id="router" class="com.zhaimi.message.router.RandomRouter"/>
+	<bean id="router" class="com.zhaimi.koper.router.RandomRouter"/>
 
-	<bean id="messageCenter" class="com.zhaimi.message.DefaultMessageCenter">
+	<bean id="messageCenter" class="com.zhaimi.koper.DefaultMessageCenter">
 		<constructor-arg index="0" value="1"/>
 		<constructor-arg index="1" ref="router"/>
 	</bean>
 
-	<bean id="consumerLauncher" class="com.zhaimi.message.client.DefaultConsumerLauncher" >
+	<bean id="consumerLauncher" class="com.zhaimi.koper.client.DefaultConsumerLauncher" >
 		<property name="properties" ref="consumerProperties"/>
 		<property name="autoStart" value="true"/>
 		<property name="partitions" value="${num.partitions}"/>
 		<property name="dispatcherThreads" value="${dispatcherThreads}"/>
 		<property name="messageCenter" ref="messageCenter"/>
-		<property name="messageReceiverClass" value="com.zhaimi.message.kafka.KafkaReceiver"/>
-        <property name="messageDispatcherClass" value="com.zhaimi.message.event.DataEventMessageDispatcher"/>
+		<property name="messageReceiverClass" value="com.zhaimi.koper.kafka.KafkaReceiver"/>
+        <property name="messageDispatcherClass" value="com.zhaimi.koper.event.DataEventMessageDispatcher"/>
 	</bean>
 </beans>

@@ -22,14 +22,23 @@
         <dependency>
             <groupId>com.zhaimi</groupId>
             <artifactId>koper-core</artifactId>
+            <version>${koper-core-version}</version>
         </dependency>
         <dependency>
             <groupId>com.zhaimi</groupId>
             <artifactId>koper-aop</artifactId>
+            <version>${koper-aop-version}</version>
         </dependency>
         <dependency>
             <groupId>com.zhaimi</groupId>
             <artifactId>koper-dataevent</artifactId>
+            <version>${koper-dataevent-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zhaimi</groupId>
+            <artifactId>koper-kafka</artifactId>
+            <version>${koper-kafka-version}</version>
         </dependency>
 
         <dependency>
@@ -60,11 +69,6 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.zhaimi</groupId>
-            <artifactId>koper-kafka</artifactId>
         </dependency>
 
         <dependency>

@@ -24,6 +24,7 @@
         <dependency>
             <groupId>com.zhaimi</groupId>
             <artifactId>koper-core</artifactId>
+            <version>${koper-core-version}</version>
         </dependency>
 
         <dependency>
