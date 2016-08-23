@@ -3,8 +3,8 @@ Koper是一个基于消息队列和分布式事件驱动计算的框架。
 
  * Koper提供了简化的分布式监听器模型和数据监听器模型，它可以帮你建立异步化应用(in a simple way)。
 
-    [[Quick Start]](https://github.com/ZhaimeGroup/koper/wiki/Quick%20Start)
-    [[User Guide]](https://github.com/ZhaimeGroup/koper/wiki/User%20Guide)
+    [[快速启动]](https://github.com/ZhaimeGroup/koper/wiki/%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8)
+    [[用户指南]](https://github.com/ZhaimeGroup/koper/wiki/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97)
 
 # Concept
 
