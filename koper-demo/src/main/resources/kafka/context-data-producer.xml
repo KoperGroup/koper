@@ -7,7 +7,7 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-    <context:component-scan base-package="com.zhaimi"/>
+    <context:component-scan base-package="koper.*"/>
 
     <!-- 载入属性文件 -->
     <context:property-placeholder ignore-unresolvable="true" location="classpath:kafka/kafka-data-producer.properties"/>
@@ -25,7 +25,7 @@
         </property>
     </bean>
 
-    <bean id="messageSender" class="com.zhaimi.koper.kafka.KafkaSender">
+    <bean id="messageSender" class="koper.kafka.KafkaSender">
         <property name="properties" ref="producerProperties"/>
     </bean>
 

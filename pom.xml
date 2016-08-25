@@ -42,7 +42,7 @@
     </properties>
 
 
-    <groupId>com.zhaimi</groupId>
+    <groupId>atterlab</groupId>
     <artifactId>koper</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.zhaimi</groupId>
+        <groupId>atterlab</groupId>
         <artifactId>koper</artifactId>
         <version>1.0</version>
     </parent>
@@ -20,25 +20,25 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.zhaimi</groupId>
+            <groupId>atterlab</groupId>
             <artifactId>koper-core</artifactId>
             <version>${koper-core-version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.zhaimi</groupId>
+            <groupId>atterlab</groupId>
             <artifactId>koper-dataevent</artifactId>
             <version>${koper-dataevent-version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.zhaimi</groupId>
+            <groupId>atterlab</groupId>
             <artifactId>koper-aop</artifactId>
             <version>${koper-aop-version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.zhaimi</groupId>
+            <groupId>atterlab</groupId>
             <artifactId>koper-kafka</artifactId>
             <version>${koper-kafka-version}</version>
         </dependency>
@@ -117,7 +117,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.zhaimi.koper.demo.main.Main</mainClass>
+                            <mainClass>koper.demo.main.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
