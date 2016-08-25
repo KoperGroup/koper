@@ -117,7 +117,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>koper.demo.main.Main</mainClass>
+                            <mainClass>koper.demo.performance.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

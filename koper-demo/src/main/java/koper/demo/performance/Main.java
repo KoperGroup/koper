@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package koper.demo.main;
+package koper.demo.performance;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +35,7 @@ public class Main {
             logger.error("Please choose a Demo class");
             return;
         }
-        Class clazz = Class.forName("com.zhaimi.message.demo.main." + args[0]);
+        Class clazz = Class.forName("koper.message.demo.main." + args[0]);
         Method method = clazz.getMethod("main", String[].class);
         String[] actualArgs = Arrays.copyOfRange(args, 1, args.length);
         method.invoke(null, (Object) actualArgs);
