@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @since 1.2
  */
 @Component
-@DataListener(dataObject = "koper.message.demo.dataevent.mapper.impl.OrderMapperImpl")
+@DataListener(dataObject = "koper.demo.dataevent.mapper.impl.OrderMapperImpl")
 public class OrderListener {
     private static int WRITE_PERIOD = 10000;
 
