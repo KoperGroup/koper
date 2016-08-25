@@ -1,11 +1,11 @@
 # Koper
- Koper is a MQ-based and event-driven distributed programming framework.
+ Koper is a MQ-based and event-driven distributed programming framework. [[中文README]](https://github.com/raymondhekk/koper/blob/master/README-CN.md)
 
  * Koper provides a simplified distributed listener and data listener model,which can help you build your async application in a simple way.
 
 
-    [[Quick Start]](https://github.com/ZhaimeGroup/koper/wiki/Quick%20Start)   
-    [[User Guide]](https://github.com/ZhaimeGroup/koper/wiki/User%20Guide)  
+    [[Quick Start]](https://github.com/ZhaimeGroup/koper/wiki/Quick%20Start) [[快速指南]](https://github.com/KoperGroup/koper/wiki/%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8)  
+    [[User Guide]](https://github.com/ZhaimeGroup/koper/wiki/User%20Guide)  [[用户指南]](https://github.com/KoperGroup/koper/wiki/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97)
 
 # Concept 
  * Core architecture:  Message Architeture， Event Driven Architecture（EDA）
@@ -31,12 +31,12 @@
   Member signup example.
   When a member signs up, a message is sent to MQ by messageSender.
 ```Go
-   messageSender.send("zhaimi.memberSignup", "Signed up successfully! " + member.getPhoneNo());
+   messageSender.send("koper.memberSignup", "Signed up successfully! " + member.getPhoneNo());
 ```
  On the other hand, a consumer subscribes the topic and handle the message, e.g. send a SMS to notify member.
  ``` java
  @Component
- @Listen(topic = "zhaimi.memberSignup")
+ @Listen(topic = "koper.memberSignup")
  public class MemberSignupListener extends AbstractMessageListener {
 
     @Autowired
@@ -60,7 +60,7 @@ orderDao.updateOrder( order);
  DataListener responds to the event.
  ``` java
  @Component
- @DataListener(dataObject = "com.zhaimi.message.demo.dataevent.dao.impl.OrderDaoImpl")
+ @DataListener(dataObject = "koper.message.demo.dataevent.dao.impl.OrderDaoImpl")
  public class OrderListener {
     // data event: onInsertOrder
     public void onInsertOrder(Order order) {
