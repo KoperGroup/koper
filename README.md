@@ -4,8 +4,8 @@
  * Koper provides a simplified distributed listener and data listener model,which can help you build your async application in a simple way.
 
 
-    [[Quick Start]](https://github.com/KoperGroup/koper/wiki/Quick%20Start)   
-    [[User Guide]](https://github.com/KoperGroup/koper/wiki/User%20Guide)  
+    [[Quick Start]](https://github.com/ZhaimeGroup/koper/wiki/Quick%20Start)   
+    [[User Guide]](https://github.com/ZhaimeGroup/koper/wiki/User%20Guide)  
 
 # Concept 
  * Core architecture:  Message Architeture， Event Driven Architecture（EDA）
@@ -13,7 +13,7 @@
  * Core component:     MessageSender, MessageListener, DataEventListener.
  * High-level concept: consumer group, message partition
 
-![](https://raw.githubusercontent.com/wiki/KoperGroup/koper/images/arch1.png)
+![](https://raw.githubusercontent.com/wiki/ZhaimeGroup/koper/images/arch1.png)
 
 
 # Feature
@@ -86,7 +86,7 @@ orderDao.updateOrder( order);
 
 In a large-scale application, the system architecture and event driven architecture look like something below.
 
-![](https://raw.githubusercontent.com/wiki/KoperGroup/koper/images/eda.png)
+![](https://raw.githubusercontent.com/wiki/ZhaimeGroup/koper/images/eda.png)
 
 #### Typical use cases
   * Asynchronous Business Process
@@ -94,7 +94,7 @@ In a large-scale application, the system architecture and event driven architect
   * Data Log
   * Business Monitor and Alarm
   
- Refer to [Async Scenarios and examples](https://github.com/KoperGroup/koper/wiki/Async-Scenarios-and-examples) for more demos.
+ Refer to [Async Scenarios and examples](https://github.com/ZhaimeGroup/koper/wiki/Async-Scenarios-and-examples) for more demos.
 
 # Contribute
 #### 1  Fix bug or enhance Koper
@@ -103,5 +103,5 @@ In a large-scale application, the system architecture and event driven architect
 #### 2 Contribute other MQ provider
  Koper provides a Kafka provider implementation by default, but also provides high extensibility. You can implement other MQ provider easily, such as RabbitMQ, RocketMQ, ActiveMQ etc.
  
-Refer to [Developer Guide](https://github.com/KoperGroup/koper/wiki/Developer%20Guide) for details.
+Refer to [Developer Guide](https://github.com/ZhaimeGroup/koper/wiki/Developer%20Guide) for details.
 
