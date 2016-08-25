@@ -21,6 +21,9 @@
                 <prop key="serializer.class">${serializer.class}</prop>
                 <prop key="request.required.acks">${request.required.acks}</prop>
                 <prop key="producer.type">${producer.type}</prop>
+                <prop key="compression.codec">${compression.codec}</prop>
+                <prop key="batch.num.messages">${batch.num.messages}</prop>
+                <prop key="send.buffer.bytes">${send.buffer.bytes}</prop>
             </props>
         </property>
     </bean>
