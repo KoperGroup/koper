@@ -31,12 +31,12 @@
   Member signup example.
   When a member signs up, a message is sent to MQ by messageSender.
 ```Go
-   messageSender.send("zhaimi.memberSignup", "Signed up successfully! " + member.getPhoneNo());
+   messageSender.send("koper.memberSignup", "Signed up successfully! " + member.getPhoneNo());
 ```
  On the other hand, a consumer subscribes the topic and handle the message, e.g. send a SMS to notify member.
  ``` java
  @Component
- @Listen(topic = "zhaimi.memberSignup")
+ @Listen(topic = "koper.memberSignup")
  public class MemberSignupListener extends AbstractMessageListener {
 
     @Autowired
@@ -60,7 +60,7 @@ orderDao.updateOrder( order);
  DataListener responds to the event.
  ``` java
  @Component
- @DataListener(dataObject = "com.zhaimi.message.demo.dataevent.dao.impl.OrderDaoImpl")
+ @DataListener(dataObject = "koper.message.demo.dataevent.dao.impl.OrderDaoImpl")
  public class OrderListener {
     // data event: onInsertOrder
     public void onInsertOrder(Order order) {
