@@ -18,6 +18,7 @@ package koper.event;
 
 import com.alibaba.fastjson.JSON;
 import koper.DefaultMessageDispatcher;
+import koper.Listen;
 import koper.MsgBean;
 import koper.MsgBeanListener;
 import koper.convert.ConverterCenter;
@@ -45,9 +46,8 @@ public class DataEventMessageDispatcher extends DefaultMessageDispatcher {
     protected void triggerMessageListener(MsgBean<String, String> msgBean, Object listener) {
         try {
             // 调用底层的onMessageBean事件方法，传递底层的msgBean对象
-            if (listener instanceof MsgBeanListener) {
-                MsgBeanListener msgBeanListener = (MsgBeanListener) listener;
-                super.triggerMessageListener(msgBean, msgBeanListener);
+            if (listener.getClass().getAnnotation(Listen.class) != null || listener instanceof MsgBeanListener) {
+                super.triggerMessageListener(msgBean, listener);
             } else {
                 triggerDataEventMethod(listener, msgBean);
             }
@@ -69,7 +69,7 @@ public class DataEventMessageDispatcher extends DefaultMessageDispatcher {
         triggerDataEvent(listener, dataObject, msgBean);
     }
 
-    public void triggerDataEvent(Object listener, String dataObject, MsgBean<String, String> msgBean) {
+    private void triggerDataEvent(Object listener, String dataObject, MsgBean<String, String> msgBean) {
         if (log.isDebugEnabled())
             log.debug("AbstractDataEventListener收到数据消息: " + msgBean);
 
@@ -89,7 +89,6 @@ public class DataEventMessageDispatcher extends DefaultMessageDispatcher {
 
             if (log.isDebugEnabled())
                 log.debug("查找DataEvent事件处理方法:{}", event);
-
 
             final Optional<Method> methodOptional = ReflectUtil.getMethod(clazz, eventName,
                     method -> method.getParameters().length == dataEvent.getArgs().size()
@@ -151,7 +150,7 @@ public class DataEventMessageDispatcher extends DefaultMessageDispatcher {
     /**
      * 根据Topic转换为事件的名字, 一般的规则为 onXXX.
      * 例如:
-     * 将 com.zhaimi.message.demo.trading.mapper.impl.OrderMapperImpl.insertOrder
+     * 将 koper.demo.trading.mapper.impl.OrderMapperImpl.insertOrder
      * 转换成事件名 则 为 onInsertOrder
      *
      * @param event topic字符串
