@@ -4,7 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <!-- <zm-framework-version>1.0</zm-framework-version> -->
 
         <!-- Koper -->
         <koper-core-version>1.2.0</koper-core-version>
@@ -42,7 +41,7 @@
     </properties>
 
 
-    <groupId>com.zhaimi</groupId>
+    <groupId>atterlab</groupId>
     <artifactId>koper</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
