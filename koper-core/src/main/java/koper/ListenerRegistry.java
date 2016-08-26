@@ -28,7 +28,7 @@ public class ListenerRegistry {
     private Map<String, Object> listenerMap = new ConcurrentHashMap<>();
 
     /**
-     * 注册监听器。 Resigster listener
+     * 注册监听器。 register listener
      *
      * @param topic
      * @param listener

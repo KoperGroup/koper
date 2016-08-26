@@ -80,4 +80,20 @@ public class KafkaSenderTest extends AbstractDependencyInjectionSpringContextTes
         messageSender.send(orderTopic, order);
     }
 
+    public void testSendMsg() {
+        final String topic = "koper.testSendMsg";
+        final String msg = "msgmsg";
+
+        messageSender.send(topic, msg);
+
+    }
+
+    public void testSendMsg2() {
+        final String topic = "koper.testSendMsg2";
+        final String msg = "msgmsg";
+
+        messageSender.send(topic, msg);
+
+    }
+
 }
