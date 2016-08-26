@@ -37,7 +37,7 @@
  ``` java
  @Component
  @Listen(topic = "koper.memberSignup")
- public class MemberSignupListener extends AbstractMessageListener {
+ public class MemberSignupListener  {
 
     @Autowired
     private SmsService smsService;
