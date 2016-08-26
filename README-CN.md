@@ -39,7 +39,7 @@ Koper是一个基于消息队列和分布式事件驱动计算的框架。
  ``` java
  @Component
  @Listen(topic = "koper.memberSignup")
- public class MemberSignupListener extends AbstractMessageListener {
+ public class MemberSignupListener {
 
     @Autowired
     private SmsService smsService;
