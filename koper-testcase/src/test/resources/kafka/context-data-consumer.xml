@@ -43,7 +43,7 @@
 
 	<bean id="consumerLauncher" class="koper.client.DefaultConsumerLauncher" >
 		<property name="properties" ref="consumerProperties"/>
-		<property name="autoStart" value="true"/>
+		<property name="autoStart" value="false"/>
 		<property name="partitions" value="${num.partitions}"/>
 		<property name="dispatcherThreads" value="${dispatcherThreads}"/>
 		<property name="messageCenter" ref="messageCenter"/>

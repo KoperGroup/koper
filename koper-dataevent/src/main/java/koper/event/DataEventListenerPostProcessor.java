@@ -16,6 +16,7 @@
  */
 package koper.event;
 
+import koper.Listen;
 import koper.MessageListenerBeanPostProcessor;
 import koper.MsgBeanListener;
 import org.apache.commons.lang.StringUtils;
@@ -42,7 +43,8 @@ public class DataEventListenerPostProcessor extends MessageListenerBeanPostProce
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         Object bean0 = bean;
-        if (bean instanceof MsgBeanListener) {
+        final Listen listenAnnotation = bean.getClass().getAnnotation(Listen.class);
+        if (listenAnnotation != null || bean instanceof MsgBeanListener) {
             if (bean0 instanceof DataEventListener) {
                 registerInterfaceDataEventListener((DataEventListener) bean0);
             } else {
@@ -50,9 +52,9 @@ public class DataEventListenerPostProcessor extends MessageListenerBeanPostProce
             }
 
         } else {
-            DataListener listenOnAnnotation = bean.getClass().getAnnotation(DataListener.class);
-            if (listenOnAnnotation != null) {
-                registerAnnotationDataEventListener(bean0, listenOnAnnotation);
+            DataListener dataListenOnAnnotation = bean.getClass().getAnnotation(DataListener.class);
+            if (dataListenOnAnnotation != null) {
+                registerAnnotationDataEventListener(bean0, dataListenOnAnnotation);
             }
         }
         return bean0;

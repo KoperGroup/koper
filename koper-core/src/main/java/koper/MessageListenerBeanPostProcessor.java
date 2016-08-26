@@ -56,6 +56,17 @@ public class MessageListenerBeanPostProcessor implements BeanPostProcessor {
         if (bean instanceof MsgBeanListener) {
             log.info("*** MsgBeanListener found:" + bean);
             registerMsgBeanListener((MsgBeanListener) bean);
+        } else if (bean.getClass().getAnnotation(Listen.class) != null) {
+            // pojo listener
+            final Listen listenAnnotation = bean.getClass().getAnnotation(Listen.class);
+            final String topic = listenAnnotation.topic();
+            if (StringUtils.isBlank(topic)) {
+                throw new RuntimeException(
+                        String.format("class %s, @Listen annotation topic not specified, please check", bean)
+                );
+            } else {
+                registerListener(bean, topic);
+            }
         }
         return bean;
     }
