@@ -20,7 +20,7 @@ package koper;
  * MsgBeanListener.
  * koper-core框架中负责接收消息的最底层接口。msgBean对象包含了最原始的json消息格式。
  *
- * @author kk hekun@zhai.me
+ * @author kk raymondhekk9527@gmail.com
  * @since 1.0
  * 2016年2月19日
  */

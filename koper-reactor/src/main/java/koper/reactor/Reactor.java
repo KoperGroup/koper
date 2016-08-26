@@ -14,22 +14,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package koper;
+package koper.reactor;
+
+import koper.AbstractMessageListener;
+import koper.Identifieable;
 
 /**
- * AbstractMessageListener
- *
- * @author kk raymondhekk9527@gmail.com
+ * 
+ * Reactor
+ * @author Raymond He, raymondhekk9527@gmail.com
  * @since 1.0
- * 2016年2月19日
+ * 2016年8月26日
+ *
  */
-public abstract class AbstractMessageListener implements MessageListener {
-
-    @Override
-    public void onMsgBean(MsgBean<String, String> msgBean) {
-
-    }
-    @Override
-    public void onMessage(String msg) {
-    }
+public abstract class Reactor extends AbstractMessageListener implements Identifieable {
+	
+	private String id;
+	/**
+	 * @param id the id to set
+	 */
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	/**
+	 * @return the id
+	 */
+	@Override
+	public String getId() {
+		return id;
+	}
 }

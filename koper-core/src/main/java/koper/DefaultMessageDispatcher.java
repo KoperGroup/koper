@@ -16,16 +16,20 @@
  */
 package koper;
 
-import koper.convert.ConverterCenter;
-import koper.util.ReflectUtil;
+import java.lang.reflect.Method;
+import java.util.Date;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingQueue;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.Method;
-import java.util.Date;
-import java.util.Optional;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import koper.convert.ConverterCenter;
+import koper.util.ReflectUtil;
+import reactor.core.Reactor;
 
 /**
  * @author kk
@@ -134,6 +138,10 @@ public class DefaultMessageDispatcher implements MessageDispatcher {
         if (methodOptional.isPresent()) {
             final Method method = methodOptional.get();
             // 2. 构造方法入参
+            String id = msgBean.getKey();
+            
+            listener = buildListener(listener, id) ;
+            
             final String value = msgBean.getValue();
             final String valueType = msgBean.getValueType();
 
@@ -146,8 +154,38 @@ public class DefaultMessageDispatcher implements MessageDispatcher {
             log.error("failed to find the method(onMessage) which in listener : [{}]", listener);
         }
     }
+    
+    private static Map<String, Object> listenerInsCache = new ConcurrentHashMap();
+    /**
+     * Build listener logic.
+ 	 * @param listener
+ 	 * @param id
+ 	 */
+ 	private Object  buildListener(Object listener, String id) {
+ 		Object instance = null;
+ 		if( id == null) {    //Singleton Mode
+ 			//Only default instance will be returned, if id is null.
+ 			return listener;
+ 		}
+ 		//objectFactory.createOrFind(Class, id)
+ 		  //Prototype Mode
+		try {
+			 instance = listenerInsCache.get(id);
+			if( instance == null)  {
+				instance = listener.getClass().newInstance();
+				listenerInsCache.put(id, instance);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Fail to create Reactor!" +  listener.getClass() +". " + e , e);
+		}
+ 		
+ 	     if(instance instanceof Identifieable) {
+          	((Identifieable)instance).setId(id);
+          }
+ 	     return instance;
+ 	}
 
-    protected void setConsumeInfo(MsgBean<String, String> msgBean) {
+	protected void setConsumeInfo(MsgBean<String, String> msgBean) {
         msgBean.setConsumeTime(new Date());
         msgBean.setConsumerTid(Thread.currentThread().getId());
     }

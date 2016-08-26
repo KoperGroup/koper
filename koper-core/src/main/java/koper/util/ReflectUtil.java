@@ -34,7 +34,7 @@ import java.util.function.Predicate;
 /**
  * ReflectUtil
  *
- * @author Raymond He, hekun@zhai.me
+ * @author Raymond He, raymondhekk9527@gmail.com
  * @author caie
  * @since 1.2
  * 2016年8月5日

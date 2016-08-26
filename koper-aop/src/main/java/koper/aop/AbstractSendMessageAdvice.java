@@ -33,7 +33,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 
  * AbstractSendMessageAdvice
  *
- * @author kk hekun@zhai.me
+ * @author kk raymondhekk9527@gmail.com
  * @since 1.0
  * 2016年1月20日
  */

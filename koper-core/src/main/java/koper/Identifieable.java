@@ -17,19 +17,18 @@
 package koper;
 
 /**
- * AbstractMessageListener
- *
- * @author kk raymondhekk9527@gmail.com
+ * Identifieable
+ * @author Raymond He, raymond2006k@126.com
  * @since 1.0
- * 2016年2月19日
+ * 2016年8月26日
+ *
  */
-public abstract class AbstractMessageListener implements MessageListener {
-
-    @Override
-    public void onMsgBean(MsgBean<String, String> msgBean) {
-
-    }
-    @Override
-    public void onMessage(String msg) {
-    }
+public interface Identifieable {
+	
+	public void setId(String id);
+	
+	/**
+	 * @return the id
+	 */
+	public String getId() ;
 }

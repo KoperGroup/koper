@@ -14,22 +14,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package koper;
+package koper.reactor.demo;
+
+import org.springframework.stereotype.Component;
+
+import koper.Listen;
+import koper.reactor.Reactor;
 
 /**
- * AbstractMessageListener
- *
- * @author kk raymondhekk9527@gmail.com
+ * Digger
+ * @author Raymond He, raymondhekk9527@gmail.com,raymondhekk9527@gmail.com
  * @since 1.0
- * 2016年2月19日
+ * 2016年8月25日
+ *
  */
-public abstract class AbstractMessageListener implements MessageListener {
-
-    @Override
-    public void onMsgBean(MsgBean<String, String> msgBean) {
-
-    }
-    @Override
-    public void onMessage(String msg) {
-    }
+@Component
+@Listen(topic="koper.reactor.demo.Digger")
+public class Digger  extends Reactor  {
+		
+	public void onMessage(String str) {
+		System.out.println("Digger is called "+ this+", id="  + getId() + ", msg=" + str );
+	}
 }

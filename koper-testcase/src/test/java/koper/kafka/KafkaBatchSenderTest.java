@@ -29,7 +29,7 @@ import java.util.concurrent.Executors;
 /**
  * KafkaBatchSenderTest
  *
- * @author kk hekun@zhai.me
+ * @author kk raymondhekk9527@gmail.com
  * @since 1.0
  * 2016年3月25日
  */

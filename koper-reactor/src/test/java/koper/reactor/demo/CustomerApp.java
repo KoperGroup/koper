@@ -14,22 +14,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package koper;
+package koper.reactor.demo;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import koper.client.ConsumerLauncher;
 
 /**
- * AbstractMessageListener
- *
- * @author kk raymondhekk9527@gmail.com
+ * CustomerApp
+ * @author Raymond He, raymondhekk9527@gmail.com
  * @since 1.0
- * 2016年2月19日
+ * 2016年8月26日
+ *
  */
-public abstract class AbstractMessageListener implements MessageListener {
+public class CustomerApp {
 
-    @Override
-    public void onMsgBean(MsgBean<String, String> msgBean) {
+	public static void main(String[] args) {
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:kafka/context-data-consumer.xml");
+	    ConsumerLauncher consumerLauncher = context.getBean(ConsumerLauncher.class);
+        // we have close the switch in context-data-consumer.xml profile(autoStart) temporary
+        consumerLauncher.start();
+	}
 
-    }
-    @Override
-    public void onMessage(String msg) {
-    }
 }
