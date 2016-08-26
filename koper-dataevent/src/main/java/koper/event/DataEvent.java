@@ -24,7 +24,7 @@ import java.util.List;
  * DataEvent.
  * 数据事件。封装Event和数据消息内容。
  *
- * @author kk hekun@zhai.me
+ * @author kk raymondhekk9527@gmail.com
  * @since 1.0
  * 2016年2月19日
  */

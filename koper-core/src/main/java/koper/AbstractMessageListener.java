@@ -19,15 +19,12 @@ package koper;
 /**
  * AbstractMessageListener
  *
- * @author kk hekun@zhai.me
+ * @author kk raymondhekk9527@gmail.com
  * @since 1.0
  * 2016年2月19日
  */
 public abstract class AbstractMessageListener implements MessageListener {
 
-    /**
-     * @see MsgBeanListener#onMsgBean(MsgBean)
-     */
     @Override
     public void onMsgBean(MsgBean<String, String> msgBean) {
 

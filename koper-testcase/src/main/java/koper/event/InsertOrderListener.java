@@ -31,7 +31,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * InsertOrderListener. 订单日志监听器
  *
- * @author kk hekun@zhai.me
+ * @author kk raymondhekk9527@gmail.com
  * @since 1.0
  * 2016年3月21日
  */

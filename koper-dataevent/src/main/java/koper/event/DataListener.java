@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
  * 例如：com.zhaimi.message.demo.trading.mapper.OrderMapper
  * 或者: com.zhaimi.message.demo.trading.mapper.impl.OrderMapperImpl <br/>
  *
- * @author kk hekun@zhai.me
+ * @author kk raymondhekk9527@gmail.com
  * @since 1.0
  * 2016年3月21日
  */

@@ -14,20 +14,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package koper;
+package koper.reactor;
+
+import koper.AbstractMessageListener;
+import koper.Identifieable;
 
 /**
- * MsgBeanListener.
- * koper-core框架中负责接收消息的最底层接口。msgBean对象包含了最原始的json消息格式。
- *
- * @author kk raymondhekk9527@gmail.com
+ * 
+ * Reactor
+ * @author Raymond He, raymondhekk9527@gmail.com
  * @since 1.0
- * 2016年2月19日
+ * 2016年8月26日
+ *
  */
-public interface MsgBeanListener {
-    /**
-     * @see MessageListener#onMessage(java.lang.String)
-     */
-    public void onMsgBean(MsgBean<String, String> msgBean);
-
+public abstract class Reactor extends AbstractMessageListener implements Identifieable {
+	
+	private String id;
+	/**
+	 * @param id the id to set
+	 */
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	/**
+	 * @return the id
+	 */
+	@Override
+	public String getId() {
+		return id;
+	}
 }

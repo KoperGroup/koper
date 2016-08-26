@@ -17,17 +17,18 @@
 package koper;
 
 /**
- * MsgBeanListener.
- * koper-core框架中负责接收消息的最底层接口。msgBean对象包含了最原始的json消息格式。
- *
- * @author kk raymondhekk9527@gmail.com
+ * Identifieable
+ * @author Raymond He, raymond2006k@126.com
  * @since 1.0
- * 2016年2月19日
+ * 2016年8月26日
+ *
  */
-public interface MsgBeanListener {
-    /**
-     * @see MessageListener#onMessage(java.lang.String)
-     */
-    public void onMsgBean(MsgBean<String, String> msgBean);
-
+public interface Identifieable {
+	
+	public void setId(String id);
+	
+	/**
+	 * @return the id
+	 */
+	public String getId() ;
 }
