@@ -122,6 +122,9 @@ public class DefaultMessageDispatcher implements MessageDispatcher {
             MsgBeanListener msgBeanListener = (MsgBeanListener) listener;
             msgBeanListener.onMsgBean(msgBean);
             invokeOnMessage(msgBean, listener);
+        } else {
+            // pojo listener
+            invokeOnMessage(msgBean, listener);
         }
 
     }

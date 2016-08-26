@@ -16,7 +16,6 @@
  */
 package koper.listener;
 
-import koper.AbstractMessageListener;
 import koper.Listen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,13 +26,13 @@ import org.springframework.stereotype.Component;
  * @since 1.0
  */
 @Component
-public class DemoListener extends AbstractMessageListener {
+@Listen(topic = "koper.testSendMsg2")
+public class MessageListenerWithoutExtends {
 
-    private static Logger log = LoggerFactory.getLogger(DemoListener.class);
+    private static Logger log = LoggerFactory.getLogger(MessageListenerWithoutExtends.class);
 
-    @Listen(topic = "XXXXX")
     public void onMessage(String msg) {
-        log.info("DemoListener接收到消息，message={}", msg);
+        log.info("MessageListenerWithoutExtends 接收到消息，message = {}", msg);
     }
 
 }
