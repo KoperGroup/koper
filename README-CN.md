@@ -3,8 +3,8 @@ Koper是一个基于消息队列和分布式事件驱动计算的框架。
 
  * Koper提供了简化的分布式监听器模型和数据监听器模型，它可以帮你建立异步化应用(in a simple way)。
 
-    [[快速启动]](https://github.com/ZhaimeGroup/koper/wiki/%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8)
-    [[用户指南]](https://github.com/ZhaimeGroup/koper/wiki/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97)
+    [[快速启动]](https://github.com/KoperGroup/koper/wiki/%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8)
+    [[用户指南]](https://github.com/KoperGroup/koper/wiki/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97)
 
 # Concept
 
@@ -14,7 +14,7 @@ Koper是一个基于消息队列和分布式事件驱动计算的框架。
  * 核心组件： 消息发送者(MessageSender), 消息监听者(MessageListener), 数据事件监听者(DataEventListener)
  * 高层概念： 消费者群组, 消息分区
 
-![](https://raw.githubusercontent.com/wiki/ZhaimeGroup/koper/images/arch1.png)
+![](https://raw.githubusercontent.com/wiki/KoperGroup/koper/images/arch1.png)
 
 
 # 特性
@@ -33,12 +33,12 @@ Koper是一个基于消息队列和分布式事件驱动计算的框架。
 当一个用户注册， `MessageSender` 会向MQ发送一个消息。
 
 ``` Go
-   messageSender.send("zhaimi.memberSignup", "Signed up successfully! " + member.getPhoneNo());
+   messageSender.send("koper.memberSignup", "Signed up successfully! " + member.getPhoneNo());
 ```
 同时，消费者订阅了这个主题然后处理消息(发送消息通知用户)。
  ``` java
  @Component
- @Listen(topic = "zhaimi.memberSignup")
+ @Listen(topic = "koper.memberSignup")
  public class MemberSignupListener extends AbstractMessageListener {
 
     @Autowired
@@ -62,7 +62,7 @@ orderDao.updateOrder( order);
 响应事件的监听器（DataListener）
  ``` java
  @Component
- @DataListener(dataObject = "com.zhaimi.message.demo.dataevent.dao.impl.OrderDaoImpl")
+ @DataListener(dataObject = "koper.demo.dataevent.dao.impl.OrderDaoImpl")
  public class OrderListener {
     // data event: onInsertOrder
     public void onInsertOrder(Order order) {
@@ -88,7 +88,7 @@ Koper是基于消息队列和事件驱动架构进行分布式计算的框架，
 
 在一个高可伸缩的应用里，系统架构和事件驱动架构如下：
 
-![](https://raw.githubusercontent.com/wiki/ZhaimeGroup/koper/images/eda.png)
+![](https://raw.githubusercontent.com/wiki/KoperGroup/koper/images/eda.png)
 
 #### 典型的使用场景
    * 异步业务处理
@@ -96,7 +96,7 @@ Koper是基于消息队列和事件驱动架构进行分布式计算的框架，
    * 数据日志
    * 业务监控和告警
 
-详情参见 [Async Scenarios and examples](https://github.com/ZhaimeGroup/koper/wiki/Async-Scenarios-and-examples).
+详情参见 [Async Scenarios and examples](https://github.com/KoperGroup/koper/wiki/Async-Scenarios-and-examples).
 
 # 如何参与贡献
 
@@ -106,4 +106,4 @@ Koper是基于消息队列和事件驱动架构进行分布式计算的框架，
 #### 2 贡献其他的消息队列实现
 Koper提供了Kafka Provider作为缺省实现。 而且Koper有着良好的扩展性，你可以轻松的实现其他消息队列的Provider，比如说 RabbitMQ, RocketMQ, ActiveMQ 等等。
 
-详情参见 [Developer Guide](https://github.com/ZhaimeGroup/koper/wiki/Developer%20Guide) .
+详情参见 [Developer Guide](https://github.com/KoperGroup/koper/wiki/Developer%20Guide) .
